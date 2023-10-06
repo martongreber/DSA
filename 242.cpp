@@ -1,16 +1,16 @@
+#include <cassert>
 #include <iostream>
 #include <unordered_map>
-#include <cassert>
 
 using namespace std;
 
 class Solution {
-public:
+   public:
     bool isAnagram(const string& s, const string& t) {
-        if (s.size()!=t.size()) {
+        if (s.size() != t.size()) {
             return false;
         }
-        unordered_map<char,int> charCount;
+        unordered_map<char, int> charCount;
         for (char c : s) {
             charCount[c]++;
         }
@@ -24,16 +24,15 @@ public:
     }
 };
 
-int main(int argc, const char * argv[]) {
-
+int main(int argc, const char* argv[]) {
     string s = "rat";
     string t = "tar";
     Solution sol;
-    assert(sol.isAnagram(s,t));
+    assert(sol.isAnagram(s, t));
 
     s = "rad";
     t = "tar";
-    assert(!sol.isAnagram(s,t));
+    assert(!sol.isAnagram(s, t));
 
     return 0;
 }
