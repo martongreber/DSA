@@ -6,19 +6,21 @@ using namespace std;
 
 class Solution {
 public:
-    bool isAnagram(string s, string t) {
-        if(s.size()!=t.size()){
+    bool isAnagram(const string& s, const string& t) {
+        if (s.size()!=t.size()) {
             return false;
         }
-        unordered_map<char,int> ss, st;
-        for(int i=0;i<s.size();i++){
-            ss[s[i]]+=1;
-            st[t[i]]++;
+        unordered_map<char,int> charCount;
+        for (char c : s) {
+            charCount[c]++;
         }
-        if(ss==st){
-            return true;
+
+        for (char c : t) {
+            if (--charCount[c] == 0) {
+                charCount.erase(c);
+            }
         }
-        return false;
+        return charCount.empty();
     }
 };
 
